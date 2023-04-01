@@ -31,3 +31,9 @@ header {
     background-color: rgba(16, 69, 246, 0.2);
     color: #1045F6;
 }
+
+@media screen and (max-width: 1450px) {
+    .filter-btn {
+        font-size: 13px;
+    }
+}

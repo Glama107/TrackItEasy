@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.ReactModal__Content {
+.modal-add-package {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -14,19 +14,22 @@
     right: 0;
     bottom: 0;
     width: 400px;
-    height: 500px;
+    height: 550px;
     margin: auto;
     border: 3px solid transparent; /* this */
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.16);
     border-radius: 40px !important;
+    background: #fff;
+    animation-duration: 0.5s;
 }
 
-h2 {
+.ReactModal__Content h2 {
     margin-left: 15px;
+    margin-top: 15px;
     text-align: center;
 }
 
-form {
+.modal-add-package form {
     display: flex;
     flex-direction: column;
     height: 80%;
@@ -35,47 +38,33 @@ form {
     margin: 15px;
 }
 
-.form-group {
+.modal-add-package .form-group {
     display: flex;
     flex-direction: column;
     width: 80%;
     gap: 10px;
 }
 
-.form-group.file {
+.modal-add-package .form-group.file {
     width: fit-content;
 }
 
-input {
-    height: 40px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 0 10px;
-}
 
-.required {
+.modal-add-package .required {
     color: red;
 }
 
-.send {
-    text-align: center;
-    width: 100px;
-    padding: 10px 0;
-    border-radius: 8px;
+.modal-add-package .send {
     background: #1045F6;
     color: white;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.send:hover {
-    background: rgba(16, 69, 246, 0.7);
-    transform: translateY(-2px);
+.modal-add-package .close {
+    color: #1045F6;
 }
 
-.input-file {
+
+.modal-add-package .input-file {
     background: rgba(211, 211, 211, 0.5);
     padding: 15px 45px;
     text-align: center;
@@ -84,19 +73,13 @@ input {
     transition: all 0.3s ease;
 }
 
-.input-file:hover {
+.modal-add-package .input-file:hover {
     background: rgba(211, 211, 211, 0.3);
     transform: translateY(-2px);
 }
 
-.button-container {
+.modal-add-package .button-container {
     width: 80%;
     display: flex;
     justify-content: space-between;
-}
-
-.send.close {
-    color: rgba(16, 69, 246, 1);
-    border: 1px solid rgba(16, 69, 246, 1);
-    background: #fff;
 }

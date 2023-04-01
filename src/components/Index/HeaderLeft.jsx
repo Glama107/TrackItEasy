@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './style/header.css'
 
 function HeaderLeft({setSelectedFilter, selectedFilter, countCardsFilter}) {
     //States
-    const [activeFilter, setActiveFilter] = useState('all');
 
     // Comportements
     const handleFilterClick = (filter) => {

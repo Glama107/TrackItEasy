@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderRight from "./HeaderRight";
 import TrackingMap from "./TrackingMap";
-import './style/rightpart.css'
+import './style/right-part.css'
 
 function IndexRightPart() {
     //States

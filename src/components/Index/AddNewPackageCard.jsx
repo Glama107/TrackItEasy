@@ -1,7 +1,10 @@
 import React, {useState} from "react";
-import "./style/card.css";
-import "./style/addNewCard.css";
+import "./style/tracking-card.css";
+import "./style/add-new-package-card.css";
 import AddNewPackageModalForm from "./AddNewPackageModalForm";
+import 'animate.css/animate.min.css';
+import {Button, ThemeProvider} from "@mui/material";
+import theme from "../../themeMUI";
 
 function AddNewPackageCard({cards, setCards}) {
 //States
@@ -11,22 +14,24 @@ function AddNewPackageCard({cards, setCards}) {
     const handleOpenModal = () => {
         setModalIsOpen(true);
     };
-    const handleCloseModal = () => {
-        setModalIsOpen(false);
-    };
 
 //Rendu
     return (
         <div>
-            <div className="card add-package">
+            <div
+                className="tracking-card add-package animate__animated animate__fadeInUp">
                 <img alt="" src="./illustration-delivery.png"/>
                 <h2>Add new package</h2>
                 <p>Fill out the form and create new package</p>
-                <button onClick={handleOpenModal}>+</button>
+                <ThemeProvider theme={theme}>
+                    <Button type={"submit"} onClick={handleOpenModal}
+                            color={"primary"}
+                            variant="contained">+</Button>
+                </ThemeProvider>
             </div>
             <AddNewPackageModalForm
                 modalIsOpen={modalIsOpen}
-                handleCloseModal={handleCloseModal}
+                setModalIsOpen={setModalIsOpen}
                 cards={cards}
                 setCards={setCards}
             />

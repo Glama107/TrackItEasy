@@ -1,15 +1,40 @@
 import React, {useEffect, useState} from 'react';
 import AddNewPackageCard from "./AddNewPackageCard";
 import TrackingCard from "./TrackingCard";
+import './style/tracking-card-list.css'
 
 function TrackingCardsList({selectedFilter, setCountCardsFilter}) {
     //States
     const [gridMaxHeight, setGridMaxHeight] = useState('auto');
     const [cards, setCards] = useState(() => [
-        {id: 1, tracking_number: 'FDIOFDHS', status_ship: 'prepared'},
-        {id: 2, tracking_number: 'ZEA23132', status_ship: 'ready'},
-        {id: 3, tracking_number: '432BHREZ', status_ship: 'delivered'},
-        {id: 4, tracking_number: 'ZEI0A9E32', status_ship: 'transit'},
+        {
+            id: 1,
+            tracking_number: 'FDIOFDHS',
+            title: 'Nike Air Max 270',
+            status_ship: 'prepared',
+            shop: 'Amazon'
+        },
+        {
+            id: 2,
+            tracking_number: 'ZEA23132',
+            title: 'Nike Air Max 270',
+            status_ship: 'ready',
+            shop: 'Zalando'
+        },
+        {
+            id: 3,
+            tracking_number: '432BHREZ',
+            title: 'Nike Air Max 270',
+            status_ship: 'delivered',
+            shop: 'Nike'
+        },
+        {
+            id: 4,
+            tracking_number: 'ZEI0A9E32',
+            title: 'Nike Air Max 270',
+            status_ship: 'transit',
+            shop: 'Zalando'
+        },
     ], []);
 
     // Comportements
@@ -56,7 +81,8 @@ function TrackingCardsList({selectedFilter, setCountCardsFilter}) {
             <div className="card-container">
                 <AddNewPackageCard cards={cards} setCards={setCards}/>
                 {sortedCards.map((card) => (
-                    <TrackingCard key={card.id} cardInfo={card}/>
+                    <TrackingCard key={card.id} card={card} cards={cards}
+                                  setCards={setCards}/>
                 ))}
             </div>
         </div>
