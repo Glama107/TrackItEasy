@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,17 +13,38 @@ import Container from '@mui/material/Container';
 import {ThemeProvider} from '@mui/material/styles';
 import theme from "../themeMUI";
 import ApiService from "../Services/ApiService";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import {useState} from "react";
+import {CircularProgress} from "@mui/material";
+
 
 const apiService = new ApiService()
 
 
 export default function SignIn() {
+    const navigate = useNavigate();
+    const [errorText, setErrorText] = useState('');
+    const [isLoading, setIsLoading] = useState('Sign In');
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(<CircularProgress color="inherit"/>)
         const data = new FormData(event.currentTarget);
+
+        if (data.get('email') === '' || data.get('password') === '') {
+            setIsLoading('Sign In')
+            setErrorText("Veuillez remplir tous les champs");
+            return
+        }
+
         const response = await apiService.signIn(data.get('email'), data.get('password'));
         console.log(response);
+        if (response === true) {
+            navigate('/');
+        } else {
+            setIsLoading('Sign In')
+            setErrorText("Nom d'utilisateur ou mot de passe incorrect");
+        }
     };
 
     return (
@@ -48,6 +68,10 @@ export default function SignIn() {
                     <Box component="form" onSubmit={handleSubmit} noValidate
                          sx={{mt: 1}}>
                         <TextField
+                            {...errorText && {
+                                error: true,
+                                helperText: errorText
+                            }}
                             margin="normal"
                             required
                             fullWidth
@@ -58,6 +82,10 @@ export default function SignIn() {
                             autoFocus
                         />
                         <TextField
+                            {...errorText && {
+                                error: true,
+                                helperText: errorText
+                            }}
                             margin="normal"
                             required
                             fullWidth
@@ -78,8 +106,9 @@ export default function SignIn() {
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                         >
-                            Sign In
+                            {isLoading}
                         </Button>
+
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">

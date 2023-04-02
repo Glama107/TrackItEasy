@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,16 +15,36 @@ import Container from '@mui/material/Container';
 import {ThemeProvider} from '@mui/material/styles';
 import theme from "../themeMUI";
 import ApiService from "../Services/ApiService";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import {CircularProgress} from "@mui/material";
 
 const apiService = new ApiService()
 
 
 export default function SignUpComponent() {
+    const navigate = useNavigate();
+    const [errorText, setErrorText] = useState('');
+    const [errorEmpty, setErrorEmpty] = useState('');
+    const [isLoading, setIsLoading] = useState('Sign Up');
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(<CircularProgress color="inherit"/>)
         const data = new FormData(event.currentTarget);
+
+        if (data.get('username') === '' || data.get('email') === '' || data.get('password') === '') {
+            setIsLoading('Sign Up')
+            setErrorEmpty("Veuillez remplir tous les champs");
+            return;
+        }
+
         const response = await apiService.signUp(data.get('username'), data.get('email'), data.get('password'));
+        if (response === true) {
+            navigate('/');
+        } else {
+            setIsLoading('Sign Up')
+            setErrorText("Un compte avec cet email existe déjà");
+        }
         console.log(response);
     };
 
@@ -50,6 +71,10 @@ export default function SignUpComponent() {
                         <Grid container spacing={2}>
                             <Grid item xs={12}>
                                 <TextField
+                                    {...errorEmpty && {
+                                        error: true,
+                                        helperText: errorEmpty
+                                    }}
                                     autoComplete="given-name"
                                     name="username"
                                     required
@@ -62,6 +87,14 @@ export default function SignUpComponent() {
 
                             <Grid item xs={12}>
                                 <TextField
+                                    {...errorText && {
+                                        error: true,
+                                        helperText: errorText
+                                    }}
+                                    {...errorEmpty && {
+                                        error: true,
+                                        helperText: errorEmpty
+                                    }}
                                     required
                                     fullWidth
                                     id="email"
@@ -72,6 +105,10 @@ export default function SignUpComponent() {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    {...errorEmpty && {
+                                        error: true,
+                                        helperText: errorEmpty
+                                    }}
                                     required
                                     fullWidth
                                     name="password"
@@ -95,7 +132,7 @@ export default function SignUpComponent() {
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                         >
-                            Sign Up
+                            {isLoading}
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>

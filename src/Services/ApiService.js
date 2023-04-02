@@ -34,7 +34,13 @@ class ApiService {
                 })
         });
         const data = await response.json();
-        return data;
+        if (response.status === 200) {
+            localStorage.setItem("accessToken", data.accessToken);
+            localStorage.setItem("refreshToken", data.refreshToken);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     async signUp(username, email, password) {
@@ -51,7 +57,34 @@ class ApiService {
                 })
         });
         const data = await response.json();
+        if (response.status === 200) {
+            localStorage.setItem("accessToken", data.accessToken);
+            localStorage.setItem("refreshToken", data.refreshToken);
+            return true;
+        } else {
+            return false;
+        }
         return data;
+    }
+
+    async checkLogin() {
+        const response = await fetch(`${this.databaseApiRoute}/auth/refresh-token`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(
+                {"refreshToken": localStorage.getItem("refreshToken")})
+        });
+        const data = await response.json();
+        if (response.status === 200) {
+            localStorage.setItem("accessToken", data.accessToken);
+            return true;
+        } else {
+            localStorage.removeItem("refreshToken");
+            localStorage.removeItem("accessToken");
+            return false;
+        }
     }
 }
 
