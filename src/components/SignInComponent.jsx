@@ -84,7 +84,7 @@ export default function SignIn() {
                         <TextField
                             {...errorText && {
                                 error: true,
-                                helperText: errorText
+                                helperText: errorText,
                             }}
                             margin="normal"
                             required
@@ -109,16 +109,12 @@ export default function SignIn() {
                             {isLoading}
                         </Button>
 
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
+                        <Grid container justifyContent={"flex-end"}>
                             <Grid item>
                                 <NavLink to={"/register"}>
                                     <Link variant="body2">
-                                        Don't have an account? Sign Up
+                                        Vous n'avez pas de compte ?
+                                        Inscrivez-vous
                                     </Link>
                                 </NavLink>
                             </Grid>

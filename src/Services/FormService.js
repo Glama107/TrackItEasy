@@ -3,31 +3,25 @@ import ApiService from "./ApiService";
 const apiService = new ApiService();
 
 class FormService {
-    async createTracking(event, cards, setCards, setNewTracking) {
+    async createTracking(event, setCardsUpdated) {
         try {
-            const cardsCopy = [...cards];
-            const id = new Date().getTime();
             const tracking_number = event.target.elements.trackingNumber.value;
-            const title = event.target.elements.titleTracking.value;
+            const alias = event.target.elements.titleTracking.value;
             const shop = event.target.elements.shop.value;
+            const articles = event.target.elements.articles.value;
 
 
-            const postApi = await apiService.CreateTracking(tracking_number, title);
-            console.log(postApi);
+            const postApi = await apiService.CreateTracking({
+                "trackingNumber": `${tracking_number}`,
+                "userID": `${localStorage.getItem("userID")}`,
+                "alias": `${alias}`,
+                "shop": `${shop}`,
+                "articles": `${articles}`,
+            });
+            //TODO: Call the API to refresh the cards
+            setCardsUpdated(true);
 
-            if (postApi.meta.code === 201) {
-                const status_ship = postApi.data.tracking.tag;
-                const cardToAdd = {
-                    id,
-                    tracking_number,
-                    title,
-                    status_ship,
-                    shop
-                };
-                cardsCopy.push(cardToAdd);
-                setCards(cardsCopy);
-                setNewTracking("");
-            }
+
         } catch (error) {
             console.error(error);
         }

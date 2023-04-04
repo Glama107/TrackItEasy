@@ -138,7 +138,7 @@ export default function SignUpComponent() {
                             <Grid item>
                                 <NavLink to={"/login"}>
                                     <Link variant="body2">
-                                        Already have an account? Sign in
+                                        Déjà un compte ? Connectez-vous
                                     </Link>
                                 </NavLink>
                             </Grid>

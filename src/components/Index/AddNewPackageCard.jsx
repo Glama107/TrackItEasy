@@ -6,7 +6,7 @@ import 'animate.css/animate.min.css';
 import {Button, ThemeProvider} from "@mui/material";
 import theme from "../../themeMUI";
 
-function AddNewPackageCard({cards, setCards}) {
+function AddNewPackageCard({cards, setCards, setCardsUpdated}) {
 //States
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -34,6 +34,7 @@ function AddNewPackageCard({cards, setCards}) {
                 setModalIsOpen={setModalIsOpen}
                 cards={cards}
                 setCards={setCards}
+                setCardsUpdated={setCardsUpdated}
             />
         </div>
     );

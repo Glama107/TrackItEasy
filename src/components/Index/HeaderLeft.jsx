@@ -30,9 +30,9 @@ function HeaderLeft({setSelectedFilter, selectedFilter, countCardsFilter}) {
                         shipping ({countCardsFilter.ready})
                     </button>
                     <button
-                        className={`filter-btn ${selectedFilter === 'delivered' ? 'active' : ''}`}
-                        onClick={() => handleFilterClick('delivered')}>Delivered
-                        ({countCardsFilter.delivered})
+                        className={`filter-btn ${selectedFilter === 'DELIVERED' ? 'active' : ''}`}
+                        onClick={() => handleFilterClick('DELIVERED')}>Delivered
+                        ({countCardsFilter.DELIVERED})
                     </button>
                     <button
                         className={`filter-btn ${selectedFilter === 'transit' ? 'active' : ''}`}

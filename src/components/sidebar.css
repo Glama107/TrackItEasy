@@ -48,7 +48,7 @@ nav {
 .menu a.active::before {
     content: "";
     position: absolute;
-    left: -152%;
+    left: -240%;
     top: -50%;
     bottom: 0;
     width: 5px;

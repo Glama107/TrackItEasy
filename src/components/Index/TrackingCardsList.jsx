@@ -2,87 +2,68 @@ import React, {useEffect, useState} from 'react';
 import AddNewPackageCard from "./AddNewPackageCard";
 import TrackingCard from "./TrackingCard";
 import './style/tracking-card-list.css'
+import ApiService from "../../Services/ApiService";
+
+const apiService = new ApiService();
 
 function TrackingCardsList({selectedFilter, setCountCardsFilter}) {
     //States
     const [gridMaxHeight, setGridMaxHeight] = useState('auto');
-    const [cards, setCards] = useState(() => [
-        {
-            id: 1,
-            tracking_number: 'FDIOFDHS',
-            title: 'Nike Air Max 270',
-            status_ship: 'prepared',
-            shop: 'Amazon'
-        },
-        {
-            id: 2,
-            tracking_number: 'ZEA23132',
-            title: 'Nike Air Max 270',
-            status_ship: 'ready',
-            shop: 'Zalando'
-        },
-        {
-            id: 3,
-            tracking_number: '432BHREZ',
-            title: 'Nike Air Max 270',
-            status_ship: 'delivered',
-            shop: 'Nike'
-        },
-        {
-            id: 4,
-            tracking_number: 'ZEI0A9E32',
-            title: 'Nike Air Max 270',
-            status_ship: 'transit',
-            shop: 'Zalando'
-        },
-    ], []);
+    const [cards, setCards] = useState([]);
+    const [cardsUpdated, setCardsUpdated] = useState(false);
 
     // Comportements
 
     useEffect(() => {
-        // Tri des cartes par ordre décroissant d'id
-        const sortedCards = [...cards].sort((a, b) => b.id - a.id);
+        async function fetchData() {
+            const data = await apiService.getTrackingByUser();
 
-        const numCards = sortedCards.reduce((num, card) => {
-            num[card.status_ship]++;
-            num.all++;
-            return num;
-        }, {all: 0, prepared: 0, ready: 0, delivered: 0, transit: 0});
+            // Sort the data array by createdAt in descending order
+            data.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
 
-        // Convertit les nombres en chaînes de caractères
-        const numCardsStr = Object.keys(numCards).reduce((obj, key) => {
-            obj[key] = numCards[key].toString();
-            return obj;
-        }, {});
+            setCards(data);
+            console.log(data);
 
-        setCountCardsFilter(numCardsStr);
+            const numCards = data.reduce((num, card) => {
+                num[card.status]++;
+                num.all++;
+                return num;
+            }, {all: 0, prepared: 0, ready: 0, DELIVERED: 0, transit: 0});
 
-        // Calcule la hauteur de la grille en fonction du nombre d'éléments de carte
-        const numRows = Math.ceil(numCards[selectedFilter] / 2);
-        const gridHeight = `${numRows * 300}px`;
-        setGridMaxHeight(gridHeight);
-    }, [cards, selectedFilter]);
+            const numCardsStr = Object.keys(numCards).reduce((obj, key) => {
+                obj[key] = numCards[key].toString();
+                return obj;
+            }, {});
 
+            setCountCardsFilter(numCardsStr);
+
+            const numRows = Math.ceil(numCards[selectedFilter] / 2);
+            const gridHeight = `${numRows * 300}px`;
+            setGridMaxHeight(gridHeight);
+        }
+
+        fetchData();
+        setCardsUpdated(false);
+    }, [selectedFilter, setCountCardsFilter, cardsUpdated]);
 
     //Filtre les cartes en fonction du filtre sélectionné
-    const filteredCards = selectedFilter === 'all' ? cards : cards.filter(card => card.status_ship === selectedFilter);
+    const filteredCards = selectedFilter === 'all' ? cards : cards.filter(card => card.status === selectedFilter);
 
-    // Tri des cartes par ordre décroissant d'id
-    const sortedCards = [...filteredCards].sort((a, b) => b.id - a.id);
 
     //Rendu
     return (
-        <div
-            style={{
-                maxHeight: gridMaxHeight,
-                overflowY: "scroll",
-                minHeight: "90vh"
-            }}>
+        <div style={{
+            maxHeight: gridMaxHeight,
+            overflowY: "scroll",
+            minHeight: "90vh"
+        }}>
             <div className="card-container">
-                <AddNewPackageCard cards={cards} setCards={setCards}/>
-                {sortedCards.map((card) => (
-                    <TrackingCard key={card.id} card={card} cards={cards}
-                                  setCards={setCards}/>
+                <AddNewPackageCard cards={cards} setCards={setCards}
+                                   setCardsUpdated={setCardsUpdated}/>
+                {filteredCards && filteredCards.map((card) => (
+                    <TrackingCard key={card._id} card={card} cards={cards}
+                                  setCards={setCards}
+                                  setCardsUpdated={setCardsUpdated}/>
                 ))}
             </div>
         </div>

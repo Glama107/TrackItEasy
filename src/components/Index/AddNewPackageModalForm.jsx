@@ -18,7 +18,8 @@ const AddNewPackageModalForm = ({
                                     modalIsOpen,
                                     setModalIsOpen,
                                     cards,
-                                    setCards
+                                    setCards,
+                                    setCardsUpdated
                                 }) => {
     const [newTracking, setNewTracking] = useState("");
     const [newTrackingTitle, setNewTrackingTitle] = useState("");
@@ -28,7 +29,8 @@ const AddNewPackageModalForm = ({
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await formService.createTracking(event, cards, setCards, setNewTracking);
+        await formService.createTracking(event, setCardsUpdated);
+        setNewTracking("");
         handleCloseModal();
     };
 
@@ -72,7 +74,17 @@ const AddNewPackageModalForm = ({
                             <input hidden accept="image/*" multiple
                                    type="file"/>
                         </Button>
+
                     </div>
+                    <div className={"form-group"}>
+                        <TextField
+                            id="articles"
+                            label="Articles"
+                            multiline
+                            maxRows={4}
+                        />
+                    </div>
+
 
                     <div className="button-container">
 

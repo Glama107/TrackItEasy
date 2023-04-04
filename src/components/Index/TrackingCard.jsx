@@ -3,7 +3,7 @@ import './style/tracking-card.css'
 import ConfirmSupressModal from "./ConfirmSupressModal";
 import 'animate.css/animate.min.css';
 
-function TrackingCard(props) {
+function TrackingCard({card, setCardsUpdated}) {
     //States
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -12,10 +12,6 @@ function TrackingCard(props) {
         setModalIsOpen(true);
     };
 
-    const Capitalize = (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
-    }
-
 
     //Rendu
     return (
@@ -23,11 +19,12 @@ function TrackingCard(props) {
             <div className="row">
                 <div className="col">
                     <p className="title">Number</p>
-                    <p className="content">{props.card.tracking_number}</p>
+                    <p className="content">{card.trackingNumber}</p>
                 </div>
                 <div className="col">
                     <p className="title">Status</p>
-                    <p className={"content status " + props.card.status_ship}>• {Capitalize(props.card.status_ship)}</p>
+                    <p className={"content status " + card.status}>• {card.status}
+                    </p>
                 </div>
                 <div className="col">
                     <div className="row-edit">
@@ -44,9 +41,8 @@ function TrackingCard(props) {
             <ConfirmSupressModal
                 modalIsOpen={modalIsOpen}
                 setModalIsOpen={setModalIsOpen}
-                card={props.card}
-                cards={props.cards}
-                setCards={props.setCards}
+                card={card}
+                setCardsUpdated={setCardsUpdated}
             />
 
 
@@ -54,7 +50,7 @@ function TrackingCard(props) {
             <div className="row">
                 <div className="col">
                     <p className="title">Departure</p>
-                    <p className="content">11/08/2023</p>
+                    <p className="content">{card.depositDate ? card.depositDate : "N/A"}</p>
                 </div>
                 <div className="col">
                     <p className="title"></p>
@@ -62,14 +58,14 @@ function TrackingCard(props) {
                 </div>
                 <div className="col">
                     <p className="title">Arrival</p>
-                    <p className="content">13/08/2023</p>
+                    <p className="content">{card.deliveryDate ? card.deliveryDate : "N/A"}</p>
                 </div>
             </div>
             <hr/>
             <div className="row">
                 <div className="col">
                     <p className="title">Title</p>
-                    <p className="content">{props.card.title}</p>
+                    <p className="content">{card.alias ? card.alias : card.trackingNumber}</p>
                 </div>
                 <div className="col">
                     <p className="title">Weight</p>
@@ -85,8 +81,8 @@ function TrackingCard(props) {
                 <div className="col">
                     <p className="title">Company</p>
                     <p className="content">
-                        {props.card.shop ? (
-                            <img src={`shop-images/${props.card.shop}.png`}
+                        {card.shop ? (
+                            <img src={`shop-images/${card.shop}.png`}
                                  alt="Image du shop"/>
                         ) : (
                             <span>N/A</span>

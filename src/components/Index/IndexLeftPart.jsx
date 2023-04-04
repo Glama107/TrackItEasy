@@ -10,7 +10,7 @@ function IndexLeftPart() {
         all: '0',
         prepared: '0',
         ready: '0',
-        delivered: '0',
+        DELIVERED: '0',
         intransit: '0'
     });
 

@@ -1,30 +1,38 @@
 import './style/confirmation-modal.css'
 import Modal from "react-modal";
+import ApiService from "../../Services/ApiService";
 
-function ConfirmSupressModal(props) {
+const apiService = new ApiService();
+
+function ConfirmSupressModal({
+                                 modalIsOpen,
+                                 setModalIsOpen,
+                                 card,
+                                 setCardsUpdated
+                             }) {
     //States
 
 
     // Comportements
     const handleCloseModal = () => {
-        props.setModalIsOpen(false);
+        setModalIsOpen(false);
     };
 
     const handleSupress = () => {
-        const newCards = props.cards.filter(card => card.id !== props.card.id);
-        props.setCards(newCards);
+        const data = apiService.deleteTracking(card._id);
+        setCardsUpdated(true);
         handleCloseModal();
     }
 
 
     //Rendu
     return (
-        <Modal isOpen={props.modalIsOpen} onRequestClose={handleCloseModal}
+        <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}
                contentLabel="Popup" className={"confirmation-modal" +
             " animate__animated animate__fadeInUp"}>
             <h2>Suppression d'un élément</h2>
             <p>Êtes-vous sur de vraiment vouloir
-                supprimer {props.card.tracking_number} ?</p>
+                supprimer {card.tracking_number} ?</p>
             <div className={"button-container-confirm"}>
                 <button type={"button"} onClick={handleCloseModal}>Annuler
                 </button>

@@ -1,22 +1,53 @@
 class ApiService {
-    trackingApiRoute = "https://api.aftership.com/v4";
     databaseApiRoute = "http://localhost:4000/api";
-    apiKey = "asat_641ef39c5cdf4ff5babd8de1cf8c7e38";
 
-    async CreateTracking(trackingNumber, title) {
-        const response = await fetch(`${this.trackingApiRoute}/trackings`, {
+    async CreateTracking(data) {
+        const response = await fetch(`${this.databaseApiRoute}/trackings`, {
             method: "POST",
             headers: {
-                "as-api-key": this.apiKey,
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                "tracking": {
-                    "tracking_number": `${trackingNumber}`,
-                    "title": `${title}`
-                }
-            })
-        });
+            body: JSON.stringify(
+                data
+            )
+        })
+        const responseData = await response.json();
+        console.log(responseData);
+        return responseData;
+    }
+
+    async deleteTracking(id) {
+        const response = await fetch(`${this.databaseApiRoute}/trackings/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+                "Content-Type": "application/json"
+            }
+        })
+        const responseData = await response.json();
+        console.log(responseData);
+        return responseData;
+    }
+
+    async getTrackingByUser() {
+        const response = await fetch(`${this.databaseApiRoute}/trackings`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        const data = await response.json();
+        return data;
+    }
+
+    async getTrackingByCardId(cardId) {
+        const response = await fetch(`${this.databaseApiRoute}/trackings/${cardId}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
         const data = await response.json();
         return data;
     }
@@ -37,6 +68,7 @@ class ApiService {
         if (response.status === 200) {
             localStorage.setItem("accessToken", data.accessToken);
             localStorage.setItem("refreshToken", data.refreshToken);
+            localStorage.setItem("userID", data.userID);
             return true;
         } else {
             return false;
@@ -57,9 +89,10 @@ class ApiService {
                 })
         });
         const data = await response.json();
-        if (response.status === 200) {
+        if (response.status === 201) {
             localStorage.setItem("accessToken", data.accessToken);
             localStorage.setItem("refreshToken", data.refreshToken);
+            localStorage.setItem("userID", data.userID);
             return true;
         } else {
             return false;
