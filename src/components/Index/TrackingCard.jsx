@@ -68,8 +68,9 @@ function TrackingCard({card, setCardsUpdated}) {
                     <p className="content">{card.alias ? card.alias : card.trackingNumber}</p>
                 </div>
                 <div className="col">
-                    <p className="title">Weight</p>
-                    <p className="content">1.3kg</p>
+                    <p className="title">Receipt</p>
+                    <p className="content">{card.receipt ? "Sent" : "Not" +
+                        " sent"}</p>
                 </div>
                 <div className="col">
                     <p className="title">Price</p>

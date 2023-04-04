@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderRight from "./HeaderRight";
-import TrackingMap from "./TrackingMap";
 import './style/right-part.css'
+import DetailsCard from "./DetailsCard";
 
 function IndexRightPart() {
     //States
@@ -14,7 +14,7 @@ function IndexRightPart() {
     return (
         <div className="right-part">
             <HeaderRight/>
-            <TrackingMap/>
+            <DetailsCard/>
         </div>
     );
 }

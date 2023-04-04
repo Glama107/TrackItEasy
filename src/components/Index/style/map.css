@@ -1,25 +1,8 @@
 iframe {
     border-radius: 30px;
-    height: 80vh;
-    width: 600px;
+    height: 300px;
+    width: 90%;
+    margin: 20px auto;
     transition: width 0.3s ease;
-}
-
-@media screen and (max-width: 1630px) {
-    iframe {
-        width: 500px;
-    }
-}
-
-@media screen and (max-width: 1450px) {
-    iframe {
-        width: 450px;
-    }
-}
-
-@media screen and (max-width: 1050px) {
-    iframe {
-        width: 350px;
-    }
 }
 
