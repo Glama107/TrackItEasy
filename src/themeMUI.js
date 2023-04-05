@@ -1,8 +1,9 @@
-import {createTheme} from "@mui/material";
+import {createTheme, responsiveFontSizes} from "@mui/material";
 
-const theme = createTheme({
+let theme = createTheme({
     typography: {
         fontFamily: 'TT Firs Neue Trl', // Remplacez par votre police de caractères
+        fontSize: 14,
     },
     palette: {
         primary: {
@@ -14,4 +15,5 @@ const theme = createTheme({
     },
 });
 
+theme = responsiveFontSizes(theme);
 export default theme;

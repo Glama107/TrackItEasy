@@ -18,3 +18,18 @@
     margin: 0 auto;
 }
 
+.details-card .details-timeline {
+    font-size: 12px;
+}
+
+.details-card .details-container {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.details-card .informations-container {
+    width: 60%;
+}
+
