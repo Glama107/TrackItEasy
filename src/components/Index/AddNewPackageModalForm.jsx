@@ -17,8 +17,6 @@ const options = [
 const AddNewPackageModalForm = ({
                                     modalIsOpen,
                                     setModalIsOpen,
-                                    cards,
-                                    setCards,
                                     setCardsUpdated
                                 }) => {
     const [newTracking, setNewTracking] = useState("");

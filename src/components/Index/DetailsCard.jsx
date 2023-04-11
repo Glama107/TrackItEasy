@@ -13,12 +13,12 @@ import {
 } from '@mui/lab';
 import {createTheme, ThemeProvider} from "@mui/material";
 
-function DetailsCard() {
+function DetailsCard({activeCard}) {
     //States
     let timelineTheme = createTheme({
         typography: {
             fontFamily: 'TT Firs Neue Trl', // Remplacez par votre police de caractères
-            fontSize: 12,
+            fontSize: 11,
         },
         palette: {
             primary: {
@@ -37,7 +37,9 @@ function DetailsCard() {
     return (
         <div className={`details-card animate__animated animate__fadeInUp`}>
             <div className="title">
-                <h2>Tracking Details</h2>
+                <h2>Tracking Details
+                    for <br/> "{activeCard ? activeCard.alias : "XXXXXXXXXX"}"
+                </h2>
             </div>
             <TrackingMap/>
             <ThemeProvider theme={timelineTheme}>
@@ -118,9 +120,28 @@ function DetailsCard() {
                     <div className="informations-container">
                         <div className="informations">
                             <div className="information">
-                                <div className="information-title">
-                                    <h3>Tracking ID</h3>
-                                </div>
+                                <h4>Tracking ID : </h4>
+                                <p>{activeCard ? activeCard.trackingNumber : "XXXXXXXXXX"}</p>
+                            </div>
+                            <div className="information">
+                                <h4>Carrier : </h4>
+                                <p>N/A</p>
+                            </div>
+                            <div className="information">
+                                <h4>Tracking ID : </h4>
+                                <p>ID-OF-TRACKING</p>
+                            </div>
+                            <div className="information">
+                                <h4>Tracking ID : </h4>
+                                <p>ID-OF-TRACKING</p>
+                            </div>
+                            <div className="information">
+                                <h4>Tracking ID : </h4>
+                                <p>ID-OF-TRACKING</p>
+                            </div>
+                            <div className="information">
+                                <h4>Tracking ID : </h4>
+                                <p>ID-OF-TRACKING</p>
                             </div>
                         </div>
                     </div>

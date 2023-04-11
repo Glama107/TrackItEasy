@@ -6,9 +6,13 @@ class FormService {
     async createTracking(event, setCardsUpdated) {
         try {
             const tracking_number = event.target.elements.trackingNumber.value;
-            const alias = event.target.elements.titleTracking.value;
+            let alias = event.target.elements.titleTracking.value;
             const shop = event.target.elements.shop.value;
             const articles = event.target.elements.articles.value;
+
+            if (alias === "") {
+                alias = tracking_number;
+            }
 
 
             const postApi = await apiService.CreateTracking({

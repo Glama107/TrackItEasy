@@ -3,7 +3,7 @@ import HeaderRight from "./HeaderRight";
 import './style/right-part.css'
 import DetailsCard from "./DetailsCard";
 
-function IndexRightPart() {
+function IndexRightPart({activeCard}) {
     //States
 
 
@@ -14,7 +14,8 @@ function IndexRightPart() {
     return (
         <div className="right-part">
             <HeaderRight/>
-            <DetailsCard/>
+            {activeCard ? <DetailsCard activeCard={activeCard}/> :
+                <div className="no-card">Aucune carte sélectionnée</div>}
         </div>
     );
 }

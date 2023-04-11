@@ -3,7 +3,7 @@ import HeaderLeft from "./HeaderLeft";
 import './style/left-part.css'
 import TrackingCardsList from "./TrackingCardsList";
 
-function IndexLeftPart() {
+function IndexLeftPart({setActiveCard}) {
     //States
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [countCardsFilter, setCountCardsFilter] = useState({
@@ -29,6 +29,7 @@ function IndexLeftPart() {
             <TrackingCardsList
                 selectedFilter={selectedFilter}
                 setCountCardsFilter={setCountCardsFilter}
+                setActiveCard={setActiveCard}
             />
         </div>
     );

@@ -16,6 +16,7 @@
 .details-card .title {
     width: fit-content;
     margin: 0 auto;
+    text-align: center;
 }
 
 .details-card .details-timeline {
@@ -29,7 +30,28 @@
     justify-content: space-between;
 }
 
+.details-card .details-container::-webkit-scrollbar {
+    width: 4px;
+    background-color: #f2f2f2;
+}
+
+.details-card .details-container::-webkit-scrollbar-thumb {
+    background-color: rgba(16, 69, 246, 0.4);
+    border-radius: 10px;
+}
+
 .details-card .informations-container {
     width: 60%;
+}
+
+.informations {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.information {
+    display: flex;
 }
 

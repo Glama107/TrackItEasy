@@ -6,7 +6,11 @@ import ApiService from "../../Services/ApiService";
 
 const apiService = new ApiService();
 
-function TrackingCardsList({selectedFilter, setCountCardsFilter}) {
+function TrackingCardsList({
+                               selectedFilter,
+                               setCountCardsFilter,
+                               setActiveCard
+                           }) {
     //States
     const [gridMaxHeight, setGridMaxHeight] = useState('auto');
     const [cards, setCards] = useState([]);
@@ -63,7 +67,9 @@ function TrackingCardsList({selectedFilter, setCountCardsFilter}) {
                 {filteredCards && filteredCards.map((card) => (
                     <TrackingCard key={card._id} card={card} cards={cards}
                                   setCards={setCards}
-                                  setCardsUpdated={setCardsUpdated}/>
+                                  setCardsUpdated={setCardsUpdated}
+                                  setActiveCard={setActiveCard}
+                    />
                 ))}
             </div>
         </div>

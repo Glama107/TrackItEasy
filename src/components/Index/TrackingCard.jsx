@@ -3,7 +3,7 @@ import './style/tracking-card.css'
 import ConfirmSupressModal from "./ConfirmSupressModal";
 import 'animate.css/animate.min.css';
 
-function TrackingCard({card, setCardsUpdated}) {
+function TrackingCard({card, setCardsUpdated, setActiveCard}) {
     //States
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -12,10 +12,16 @@ function TrackingCard({card, setCardsUpdated}) {
         setModalIsOpen(true);
     };
 
+    const handleClick = (card) => {
+        console.log(card);
+        setActiveCard(card);
+    };
+
 
     //Rendu
     return (
-        <div className={`tracking-card animate__animated animate__fadeInUp`}>
+        <div className={`tracking-card animate__animated animate__fadeInUp`}
+             onClick={() => handleClick(card)}>
             <div className="row">
                 <div className="col">
                     <p className="title">Number</p>

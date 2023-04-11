@@ -12,7 +12,6 @@ function ConfirmSupressModal({
                              }) {
     //States
 
-
     // Comportements
     const handleCloseModal = () => {
         setModalIsOpen(false);
