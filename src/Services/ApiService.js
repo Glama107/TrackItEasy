@@ -23,11 +23,29 @@ class ApiService {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
                 "Content-Type": "application/json"
-            }
+            },
+            body: JSON.stringify(
+                {
+                    "userID": `${localStorage.getItem("userID")}`,
+                })
         })
         const responseData = await response.json();
         console.log(responseData);
         return responseData;
+    }
+
+    async addReceipt(cardId, receipt) {
+        let formData = new FormData();
+        formData.append('receipt', receipt);
+
+        const response = await fetch(`${this.databaseApiRoute}/trackings/receipt/${cardId}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: formData
+        })
+        return await response.json();
     }
 
     async getTrackingByUser() {
@@ -38,7 +56,7 @@ class ApiService {
             },
         })
         const data = await response.json();
-        return data;
+        return data.filter((item) => item.isTracked === true && item.userID === localStorage.getItem("userID"));
     }
 
     async getTrackingByCardId(cardId) {
@@ -70,9 +88,8 @@ class ApiService {
             localStorage.setItem("refreshToken", data.refreshToken);
             localStorage.setItem("userID", data.userID);
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     async signUp(username, email, password) {
@@ -94,10 +111,8 @@ class ApiService {
             localStorage.setItem("refreshToken", data.refreshToken);
             localStorage.setItem("userID", data.userID);
             return true;
-        } else {
-            return false;
         }
-        return data;
+        return false;
     }
 
     async checkLogin() {

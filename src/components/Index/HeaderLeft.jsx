@@ -20,14 +20,14 @@ function HeaderLeft({setSelectedFilter, selectedFilter, countCardsFilter}) {
                         ({countCardsFilter.all})
                     </button>
                     <button
-                        className={`filter-btn ${selectedFilter === 'prepared' ? 'active' : ''}`}
-                        onClick={() => handleFilterClick('prepared')}>Prepared
-                        ({countCardsFilter.prepared})
+                        className={`filter-btn ${selectedFilter === 'NO DATA' ? 'active' : ''}`}
+                        onClick={() => handleFilterClick('NO DATA')}>No data
+                        ({countCardsFilter.NO_DATA})
                     </button>
                     <button
-                        className={`filter-btn ${selectedFilter === 'ready' ? 'active' : ''}`}
-                        onClick={() => handleFilterClick('ready')}>Ready for
-                        shipping ({countCardsFilter.ready})
+                        className={`filter-btn ${selectedFilter === 'FILED' ? 'active' : ''}`}
+                        onClick={() => handleFilterClick('FILED')}>Filed
+                        ({countCardsFilter.FILED})
                     </button>
                     <button
                         className={`filter-btn ${selectedFilter === 'DELIVERED' ? 'active' : ''}`}
@@ -35,9 +35,10 @@ function HeaderLeft({setSelectedFilter, selectedFilter, countCardsFilter}) {
                         ({countCardsFilter.DELIVERED})
                     </button>
                     <button
-                        className={`filter-btn ${selectedFilter === 'transit' ? 'active' : ''}`}
-                        onClick={() => handleFilterClick('transit')}>In
-                        transit ({countCardsFilter.transit})
+                        className={`filter-btn ${selectedFilter === 'IN' +
+                        ' TRANSIT' ? 'active' : ''}`}
+                        onClick={() => handleFilterClick('IN TRANSIT')}>In
+                        transit ({countCardsFilter.IN_TRANSIT})
                     </button>
                 </div>
             </header>

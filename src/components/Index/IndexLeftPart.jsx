@@ -8,10 +8,10 @@ function IndexLeftPart({setActiveCard}) {
     const [selectedFilter, setSelectedFilter] = useState('all');
     const [countCardsFilter, setCountCardsFilter] = useState({
         all: '0',
-        prepared: '0',
-        ready: '0',
+        NO_DATA: '0',
+        FILED: '0',
         DELIVERED: '0',
-        intransit: '0'
+        IN_TRANSIT: '0'
     });
 
     // Comportements

@@ -30,6 +30,14 @@ class FormService {
             console.error(error);
         }
     }
+
+    async addReceipt(cardId, receipt) {
+        try {
+            await apiService.addReceipt(cardId, receipt);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 export default FormService;

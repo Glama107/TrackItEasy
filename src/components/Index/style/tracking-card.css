@@ -86,11 +86,15 @@
     color: #ff8e0c;
 }
 
+.tracking-card .no.data {
+    color: red;
+}
+
 .tracking-card .delivered {
     color: #13d54a;
 }
 
-.tracking-card .ready {
+.tracking-card .filed {
     color: #1045F6;
 }
 
@@ -100,6 +104,11 @@
 
 .tracking-card .content img {
     width: 60px;
+}
+
+.tracking-card .date {
+    color: #19583c;
+    font-weight: 600;
 }
 
 .tracking-card hr {

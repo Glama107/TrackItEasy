@@ -3,7 +3,13 @@ import Modal from "react-modal";
 import 'animate.css/animate.min.css'
 
 import "./style/add-new-package-modal.css";
-import {Autocomplete, Button, TextField, ThemeProvider} from "@mui/material";
+import {
+    Autocomplete,
+    Button,
+    CircularProgress,
+    TextField,
+    ThemeProvider
+} from "@mui/material";
 import theme from "../../themeMUI";
 import FormService from "../../Services/FormService";
 
@@ -21,15 +27,19 @@ const AddNewPackageModalForm = ({
                                 }) => {
     const [newTracking, setNewTracking] = useState("");
     const [newTrackingTitle, setNewTrackingTitle] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const formService = new FormService();
 
     const handleCloseModal = () => setModalIsOpen(false);
 
     const handleSubmit = async (event) => {
+        setIsLoading(true);
         event.preventDefault();
         await formService.createTracking(event, setCardsUpdated);
         setNewTracking("");
+        setNewTrackingTitle("");
         handleCloseModal();
+        setIsLoading(false);
     };
 
     return (
@@ -65,15 +75,6 @@ const AddNewPackageModalForm = ({
                                    variant="outlined" value={newTrackingTitle}
                                    onChange={(e) => setNewTrackingTitle(e.target.value)}/>
                     </div>
-                    <div className="form-group file">
-                        <Button variant="contained" component="label"
-                                color={"secondary"}>
-                            Preuve de dépôt
-                            <input hidden accept="image/*" multiple
-                                   type="file"/>
-                        </Button>
-
-                    </div>
                     <div className={"form-group"}>
                         <TextField
                             id="articles"
@@ -90,7 +91,9 @@ const AddNewPackageModalForm = ({
                                 variant="outlined"
                         >Close</Button>
                         <Button type={"submit"} className={"send"}
-                                variant="contained">Ajouter</Button>
+                                variant="contained">{isLoading ?
+                            <CircularProgress
+                                color="inherit"/> : 'Ajouter'}</Button>
 
                     </div>
                 </ThemeProvider>

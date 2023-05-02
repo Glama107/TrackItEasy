@@ -26,13 +26,13 @@ function TrackingCardsList({
             data.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
 
             setCards(data);
-            console.log(data);
 
             const numCards = data.reduce((num, card) => {
-                num[card.status]++;
+                num[card.status.replace(/ /g, "_")]++;
+                console.log(card.status)
                 num.all++;
                 return num;
-            }, {all: 0, prepared: 0, ready: 0, DELIVERED: 0, transit: 0});
+            }, {all: 0, NO_DATA: 0, FILED: 0, DELIVERED: 0, IN_TRANSIT: 0});
 
             const numCardsStr = Object.keys(numCards).reduce((obj, key) => {
                 obj[key] = numCards[key].toString();
