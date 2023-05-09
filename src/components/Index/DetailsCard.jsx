@@ -12,6 +12,7 @@ import {
     TimelineSeparator
 } from '@mui/lab';
 import {createTheme, ThemeProvider} from "@mui/material";
+import dayjs from "dayjs";
 
 function DetailsCard({activeCard}) {
     //States
@@ -44,107 +45,54 @@ function DetailsCard({activeCard}) {
             <TrackingMap/>
             <ThemeProvider theme={timelineTheme}>
                 <div className="details-container">
-                    <Timeline position="alternate"
-                              className={"details-timeline"}>
+                    <Timeline
+                        className={"details-timeline"}>
+                        {activeCard ? activeCard.trackingData.data.track_info.tracking.providers[0].events.map((event, index) => {
+                            return (
+                                <TimelineItem key={index}>
+                                    <TimelineOppositeContent
+                                        color="text.secondary">
+                                        <b>
+                                            {(() => {
+                                                switch (event.stage) {
+                                                    case 'Delivered':
+                                                        return <p>Livré</p>;
+                                                    case 'InTransit':
+                                                        return <p>En
+                                                            transit</p>;
+                                                    case 'AvailableForPickup':
+                                                        return <p>Prêt à être
+                                                            livré</p>;
+                                                    case 'InfoReceived':
+                                                        return <p>Label créé</p>
+                                                    case 'OutForDelivery':
+                                                        return <p>En cours de
+                                                            livraison</p>
+                                                }
+                                            })()}
+                                        </b>
+                                        <small><i>{dayjs(event.time_utc).format('DD / MM / YYYY - HH:mm')}</i></small>
+                                    </TimelineOppositeContent>
+                                    <TimelineSeparator>
+                                        <TimelineDot color={"primary"}/>
+                                        <TimelineConnector/>
+                                    </TimelineSeparator>
+                                    <TimelineContent>{event.description}</TimelineContent>
+                                </TimelineItem>
+                            )
+                        }) : null}
                         <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                09:30 am
+                            <TimelineOppositeContent
+                                color="text.secondary">
                             </TimelineOppositeContent>
                             <TimelineSeparator>
                                 <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
                             </TimelineSeparator>
-                            <TimelineContent>Eat</TimelineContent>
+                            <TimelineContent></TimelineContent>
                         </TimelineItem>
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                10:00 am
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
-                            </TimelineSeparator>
-                            <TimelineContent>Code</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                12:00 am
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
-                            </TimelineSeparator>
-                            <TimelineContent>Sleep</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                9:00 am
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
-                            </TimelineSeparator>
-                            <TimelineContent>Repeat</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                9:00 am
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
-                            </TimelineSeparator>
-                            <TimelineContent>Repeat</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                9:00 am
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
-                            </TimelineSeparator>
-                            <TimelineContent>Repeat</TimelineContent>
-                        </TimelineItem>
-                        <TimelineItem>
-                            <TimelineOppositeContent color="text.secondary">
-                                9:00 am
-                            </TimelineOppositeContent>
-                            <TimelineSeparator>
-                                <TimelineDot color={"primary"}/>
-                                <TimelineConnector/>
-                            </TimelineSeparator>
-                            <TimelineContent>Repeat</TimelineContent>
-                        </TimelineItem>
+
                     </Timeline>
-                    <div className="informations-container">
-                        <div className="informations">
-                            <div className="information">
-                                <h4>Tracking ID : </h4>
-                                <p>{activeCard ? activeCard.trackingNumber : "XXXXXXXXXX"}</p>
-                            </div>
-                            <div className="information">
-                                <h4>Carrier : </h4>
-                                <p>N/A</p>
-                            </div>
-                            <div className="information">
-                                <h4>Tracking ID : </h4>
-                                <p>ID-OF-TRACKING</p>
-                            </div>
-                            <div className="information">
-                                <h4>Tracking ID : </h4>
-                                <p>ID-OF-TRACKING</p>
-                            </div>
-                            <div className="information">
-                                <h4>Tracking ID : </h4>
-                                <p>ID-OF-TRACKING</p>
-                            </div>
-                            <div className="information">
-                                <h4>Tracking ID : </h4>
-                                <p>ID-OF-TRACKING</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </ThemeProvider>
         </div>
