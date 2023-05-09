@@ -4,6 +4,12 @@ import './sidebar.css';
 function App() {
     //States
 
+    function handleLogout() {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        window.location.reload(false);
+    }
+
 
     // Comportements
 
@@ -71,7 +77,11 @@ function App() {
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <button onClick={handleLogout}
+                                    style={{
+                                        cursor: "pointer",
+                                        background: "none"
+                                    }}>
                                 <svg version="1.1"
                                      xmlns="http://www.w3.org/2000/svg"
                                      xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -84,8 +94,7 @@ function App() {
                                             fill="#ffffff" fill-opacity="0.85"/>
                                     </g>
                                 </svg>
-
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </div>
