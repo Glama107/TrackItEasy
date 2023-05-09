@@ -109,7 +109,7 @@ class ApiService {
         if (response.status === 201) {
             localStorage.setItem("accessToken", data.accessToken);
             localStorage.setItem("refreshToken", data.refreshToken);
-            localStorage.setItem("userID", data.userID);
+            localStorage.setItem("userID", data.userId);
             return true;
         }
         return false;

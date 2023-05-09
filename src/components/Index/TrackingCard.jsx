@@ -196,7 +196,7 @@ function TrackingCard({card, setCardsUpdated, setActiveCard}) {
                     <p className="content">
                         <img
                             alt=""
-                            src={`parcel-images/${card.trackingData.data.carrier ? card.trackingData.data.carrier : null}.png`}
+                            src={`parcel-images/${card.trackingData ? card.trackingData.data.carrier : null}.png`}
                         />
                     </p>
                 </div>
