@@ -172,8 +172,8 @@ function TrackingCard({card, setCardsUpdated, setActiveCard}) {
                     <button onClick={closeReceiptModal}>Fermer</button>
                 </Modal>
                 <div className="col">
-                    <p className="title">Price</p>
-                    <p className="content">150€</p>
+                    <p className="title">Days of transit</p>
+                    <p className="content">{card.trackingData.data.track_info.time_metrics.days_of_transit} days</p>
                 </div>
             </div>
             <hr/>

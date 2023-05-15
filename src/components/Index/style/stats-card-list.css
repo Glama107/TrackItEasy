@@ -1,0 +1,23 @@
+.stats-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+    row-gap: 50px;
+    padding: 10px 10px 10px 10px;
+    overflow-y: auto;
+    height: 90vh;
+}
+
+
+@media screen and (min-width: 2290px) {
+    .stats-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .stats-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

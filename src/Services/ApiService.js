@@ -1,5 +1,5 @@
 class ApiService {
-    databaseApiRoute = "http://localhost:4000/api";
+    databaseApiRoute = "http://176.150.134.138:9987/api";
 
     async CreateTracking(data) {
         const response = await fetch(`${this.databaseApiRoute}/trackings`, {

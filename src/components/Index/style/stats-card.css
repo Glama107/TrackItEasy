@@ -1,0 +1,140 @@
+.stat-card {
+    width: 90%;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 40px;
+    border: 3px solid transparent; /* this */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.16);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.stat-card:hover:not(.add-package) {
+    cursor: pointer;
+    transform: translateY(-5px);
+    border: 3px solid rgba(16, 69, 246, 0.25);
+}
+
+.stat-card.active {
+    border: 3px solid #1045F6;
+}
+
+.stat-card .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stat-card .row-edit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.stat-card .edit {
+    background-color: #1045F6;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card .edit:hover {
+    opacity: 0.7;
+}
+
+.stat-card .edit .fas {
+    font-size: 13px;
+    color: white;
+}
+
+.stat-card .edit.delete {
+    background-color: red;
+}
+
+.stat-card .col {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-card .col .title {
+    height: 50%;
+    color: rgb(171 171 171);
+}
+
+.stat-card .col .content {
+    height: 50%;
+}
+
+.stat-card .status {
+    font-weight: 600;
+}
+
+.stat-card .transit {
+    color: #ff8e0c;
+}
+
+.stat-card .no.data {
+    color: red;
+}
+
+.stat-card .delivered {
+    color: #13d54a;
+}
+
+.stat-card .filed {
+    color: #1045F6;
+}
+
+.stat-card .prepared {
+    color: #19583c;
+}
+
+.stat-card .content img {
+    width: 60px;
+}
+
+.stat-card .date {
+    color: #19583c;
+    font-weight: 600;
+}
+
+.stat-card hr {
+    border-top: 1px solid rgba(171, 171, 171, 0.5);
+    width: 110%;
+    position: relative;
+    left: -5%;
+}
+
+@media screen and (max-width: 1630px) {
+    .stat-card {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .stat-card {
+        font-size: 11px;
+
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .stat-card {
+
+        font-size: 12px;
+    }
+}
+
