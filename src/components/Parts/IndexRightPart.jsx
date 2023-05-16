@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderRight from "./HeaderRight";
 import './style/right-part.css'
-import DetailsCard from "./DetailsCard";
+import DetailsCard from "./Cards/DetailsCard";
 
 function IndexRightPart({activeCard}) {
     //States

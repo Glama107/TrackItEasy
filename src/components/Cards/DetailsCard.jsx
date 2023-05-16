@@ -1,7 +1,7 @@
 import React from 'react';
-import './style/details-card.css'
+import '../style/details-card.css'
 import 'animate.css/animate.min.css';
-import TrackingMap from "./TrackingMap";
+import TrackingMap from "../TrackingMap";
 import {
     Timeline,
     TimelineConnector,

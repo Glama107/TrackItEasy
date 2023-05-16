@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import './style/tracking-card.css'
-import ConfirmSupressModal from "./ConfirmSupressModal";
+import '../style/tracking-card.css'
+import ConfirmSupressModal from "../ConfirmSupressModal";
 import 'animate.css/animate.min.css';
 import dayjs from "dayjs";
 import Button from "@mui/material/Button";
-import FormService from "../../Services/FormService";
+import FormService from "../../../Services/FormService";
 import Modal from "react-modal";
 
 const Capitalize = (str) => {

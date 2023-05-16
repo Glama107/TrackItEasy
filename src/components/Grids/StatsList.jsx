@@ -1,6 +1,6 @@
 import React from 'react';
 import './style/stats-card-list.css'
-import StatsCard from "./StatsCard";
+import StatsCard from "./Cards/StatsCard";
 
 function TrackingCardsList() {
     //States

@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/stats-card.css'
+import '../style/stats-card.css'
 import 'animate.css/animate.min.css';
 
 function TrackingCard() {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import AddNewPackageCard from "./AddNewPackageCard";
-import TrackingCard from "./TrackingCard";
+import AddNewPackageCard from "./Cards/AddNewPackageCard";
+import TrackingCard from "./Cards/TrackingCard";
 import './style/tracking-card-list.css'
 import ApiService from "../../Services/ApiService";
 

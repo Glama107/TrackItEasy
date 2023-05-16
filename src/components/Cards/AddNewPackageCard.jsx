@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import "./style/tracking-card.css";
-import "./style/add-new-package-card.css";
-import AddNewPackageModalForm from "./AddNewPackageModalForm";
+import "../style/tracking-card.css";
+import "../style/add-new-package-card.css";
+import AddNewPackageModalForm from "../AddNewPackageModalForm";
 import 'animate.css/animate.min.css';
 import {Button, ThemeProvider} from "@mui/material";
-import theme from "../../themeMUI";
+import theme from "../../../themeMUI";
 
 function AddNewPackageCard({cards, setCards, setCardsUpdated}) {
 //States
