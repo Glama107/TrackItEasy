@@ -1,11 +1,11 @@
 import React from 'react';
-import './sidebar.css';
+import '../style/sidebar.css';
 import {BrowserRouter, NavLink, Route, Routes} from "react-router-dom";
-import PrivateRoute from "./PrivateRoute";
-import IndexComponent from "./Index/IndexComponent";
-import StatsComponent from "./Index/StatsComponent";
-import SignIn from "./SignInComponent";
-import SignUpComponent from "./SignUpComponent";
+import PrivateRoute from "../Auth/PrivateRoute";
+import IndexComponent from "../Pages/IndexComponent";
+import StatsComponent from "../Pages/StatsComponent";
+import SignIn from "../Auth/SignInComponent";
+import SignUpComponent from "../Auth/SignUpComponent";
 
 function App() {
     //States

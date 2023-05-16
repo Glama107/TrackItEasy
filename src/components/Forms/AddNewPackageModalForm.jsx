@@ -2,7 +2,7 @@ import {useState} from "react";
 import Modal from "react-modal";
 import 'animate.css/animate.min.css'
 
-import "./style/add-new-package-modal.css";
+import "../style/add-new-package-modal.css";
 import {
     Autocomplete,
     Button,

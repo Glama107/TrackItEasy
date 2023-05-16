@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import '../style/tracking-card.css'
-import ConfirmSupressModal from "../ConfirmSupressModal";
+import ConfirmSupressModal from "../Modals/ConfirmSupressModal";
 import 'animate.css/animate.min.css';
 import dayjs from "dayjs";
 import Button from "@mui/material/Button";
-import FormService from "../../../Services/FormService";
+import FormService from "../../Services/FormService";
 import Modal from "react-modal";
 
 const Capitalize = (str) => {
@@ -167,13 +167,13 @@ function TrackingCard({card, setCardsUpdated, setActiveCard}) {
                        style={customStyles}
                        overlayStyle={customStyles.overlay}>
                     <img
-                        src={"http://localhost:4000/api/trackings/receipt/" + card.receipt}
+                        src={"http://176.150.134.138:9987/api/trackings/receipt/" + card.receipt}
                         alt="Une image"/>
                     <button onClick={closeReceiptModal}>Fermer</button>
                 </Modal>
                 <div className="col">
                     <p className="title">Days of transit</p>
-                    <p className="content">{card.trackingData.data.track_info.time_metrics.days_of_transit} days</p>
+                    <p className="content">{card.trackingData ? card.trackingData.data.track_info.time_metrics.days_of_transit : 'NA'} days</p>
                 </div>
             </div>
             <hr/>

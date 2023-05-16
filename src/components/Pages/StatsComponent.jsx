@@ -1,4 +1,4 @@
-import StatsList from "./StatsList";
+import StatsList from "../Grids/StatsList";
 
 function IndexComponent() {
     //States

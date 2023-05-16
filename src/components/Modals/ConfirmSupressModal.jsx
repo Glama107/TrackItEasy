@@ -1,4 +1,4 @@
-import './style/confirmation-modal.css'
+import '../style/confirmation-modal.css'
 import Modal from "react-modal";
 import ApiService from "../../Services/ApiService";
 

@@ -1,5 +1,5 @@
-import IndexLeftPart from "./IndexLeftPart";
-import IndexRightPart from "./IndexRightPart";
+import IndexLeftPart from "../Parts/IndexLeftPart";
+import IndexRightPart from "../Parts/IndexRightPart";
 import {useState} from "react";
 
 function IndexComponent() {

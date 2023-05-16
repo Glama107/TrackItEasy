@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/details-card.css'
 import 'animate.css/animate.min.css';
-import TrackingMap from "../TrackingMap";
+import TrackingMap from "../Map/TrackingMap";
 import {
     Timeline,
     TimelineConnector,
@@ -47,7 +47,7 @@ function DetailsCard({activeCard}) {
                 <div className="details-container">
                     <Timeline
                         className={"details-timeline"}>
-                        {activeCard ? activeCard.trackingData.data.track_info.tracking.providers[0].events.map((event, index) => {
+                        {activeCard.trackingData ? activeCard.trackingData.data.track_info.tracking.providers[0].events.map((event, index) => {
                             return (
                                 <TimelineItem key={index}>
                                     <TimelineOppositeContent
@@ -80,7 +80,7 @@ function DetailsCard({activeCard}) {
                                     <TimelineContent>{event.description}</TimelineContent>
                                 </TimelineItem>
                             )
-                        }) : null}
+                        }) : 'NO DATA'}
                         <TimelineItem>
                             <TimelineOppositeContent
                                 color="text.secondary">

@@ -2,7 +2,7 @@ import React from 'react';
 import '../style/stats-card.css'
 import 'animate.css/animate.min.css';
 
-function TrackingCard() {
+function StatsCard({stat}) {
     //States
 
 
@@ -29,10 +29,14 @@ function TrackingCard() {
     //Rendu
     return (
         <div className={`stat-card animate__animated animate__fadeInUp`}>
-
+            <img src={`./stats-images/${stat.image}.svg`} alt=""/>
+            <div className={"text-container"}>
+                <p className={"stat-text"}>{stat.stat}</p>
+                <p className={"stat-description"}>{stat.description}</p>
+            </div>
         </div>
 
     );
 }
 
-export default TrackingCard;
+export default StatsCard;

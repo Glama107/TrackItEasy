@@ -134,6 +134,50 @@ class ApiService {
             return false;
         }
     }
+
+    async getAverageDaysOfTransit() {
+        const response = await fetch(`${this.databaseApiRoute}/stats/transit`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        const data = await response.json();
+        return data.message;
+    }
+
+    async getTotalOfTrackings() {
+        const response = await fetch(`${this.databaseApiRoute}/stats/totalPackages`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        const data = await response.json();
+        return data.message;
+    }
+
+    async getDaysBetweenUpdates() {
+        const response = await fetch(`${this.databaseApiRoute}/stats/updates`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        const data = await response.json();
+        return data.message;
+    }
+
+    async getTotalOfUsers() {
+        const response = await fetch(`${this.databaseApiRoute}/stats/users`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        const data = await response.json();
+        return data.message;
+    }
 }
 
 export default ApiService;

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import HeaderLeft from "./HeaderLeft";
-import './style/left-part.css'
-import TrackingCardsList from "./TrackingCardsList";
+import HeaderLeft from "../Headers/HeaderLeft";
+import '../style/left-part.css'
+import TrackingCardsList from "../Grids/TrackingCardsList";
 
 function IndexLeftPart({setActiveCard}) {
     //States
