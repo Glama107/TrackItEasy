@@ -1,5 +1,5 @@
 class ApiService {
-    databaseApiRoute = "http://176.150.134.138:9987/api";
+    databaseApiRoute = "https://api.trackiteasy.fr/api";
 
     async CreateTracking(data) {
         const response = await fetch(`${this.databaseApiRoute}/trackings`, {

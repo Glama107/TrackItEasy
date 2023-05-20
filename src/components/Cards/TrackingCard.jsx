@@ -167,7 +167,7 @@ function TrackingCard({card, setCardsUpdated, setActiveCard}) {
                        style={customStyles}
                        overlayStyle={customStyles.overlay}>
                     <img
-                        src={"http://176.150.134.138:9987/api/trackings/receipt/" + card.receipt}
+                        src={"https://api.trackiteasy.fr/api/trackings/receipt/" + card.receipt}
                         alt="Une image"/>
                     <button onClick={closeReceiptModal}>Fermer</button>
                 </Modal>
