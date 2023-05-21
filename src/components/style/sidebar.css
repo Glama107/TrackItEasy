@@ -14,6 +14,22 @@ nav {
     z-index: 1;
 }
 
+@media screen and (max-width: 630px) {
+    nav {
+        height: 60px;
+        width: 100%;
+        transform: translateY(0);
+        top: 0;
+        flex-direction: row;
+    }
+
+    .menu ul {
+        display: flex;
+        gap: 50px;
+        align-items: baseline;
+    }
+}
+
 .logo {
     width: 50px;
     height: 50px;
