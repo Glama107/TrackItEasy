@@ -178,6 +178,17 @@ class ApiService {
         const data = await response.json();
         return data.message;
     }
+
+    async getUserDetails() {
+        const response = await fetch(`${this.databaseApiRoute}/users/${localStorage.getItem("userID")}`, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+        })
+        const data = await response.json();
+        return data;
+    }
 }
 
 export default ApiService;

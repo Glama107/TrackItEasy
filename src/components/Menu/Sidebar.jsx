@@ -6,6 +6,7 @@ import IndexComponent from "../Pages/IndexComponent";
 import StatsComponent from "../Pages/StatsComponent";
 import SignIn from "../Auth/SignInComponent";
 import SignUpComponent from "../Auth/SignUpComponent";
+import ProfileComponent from "../Pages/ProfileComponent";
 
 function App() {
     //States
@@ -38,6 +39,14 @@ function App() {
                         element={
                             <PrivateRoute>
                                 <StatsComponent/>
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        exact path="/profile"
+                        element={
+                            <PrivateRoute>
+                                <ProfileComponent/>
                             </PrivateRoute>
                         }
                     />
@@ -93,7 +102,7 @@ function App() {
                                 </NavLink>
                             </li>
                             <li>
-                                <a href="#">
+                                <NavLink to="/profile">
                                     <svg version="1.1"
                                          xmlns="http://www.w3.org/2000/svg"
                                          xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -110,7 +119,7 @@ function App() {
                                         </g>
                                     </svg>
 
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
                                 <button onClick={handleLogout}
