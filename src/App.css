@@ -27,3 +27,31 @@ main {
 main.stats-list {
     display: block;
 }
+
+.bold {
+    font-weight: 600;
+}
+
+.status {
+    font-weight: 600;
+}
+
+.transit {
+    color: #ff8e0c !important;
+}
+
+.no.data {
+    color: red !important;
+}
+
+.delivered {
+    color: #13d54a !important;
+}
+
+.filed {
+    color: #1045F6 !important;
+}
+
+.prepared {
+    color: #19583c !important;
+}

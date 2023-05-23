@@ -69,6 +69,10 @@
     grid-area: 6 / 5 / 11 / 9;
 }
 
+.profile-page .table {
+    font-size: 12px;
+}
+
 .tracking-row {
     display: flex;
     flex-direction: row;
