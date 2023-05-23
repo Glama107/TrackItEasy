@@ -68,3 +68,11 @@
 .profile-page .div5 {
     grid-area: 6 / 5 / 11 / 9;
 }
+
+.tracking-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}

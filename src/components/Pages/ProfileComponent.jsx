@@ -1,6 +1,6 @@
 import '../style/profile.css';
 import ApiService from "../../Services/ApiService";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const apiService = new ApiService();
 
@@ -8,14 +8,17 @@ const apiService = new ApiService();
 function ProfileComponent() {
     //States
     const [userDetails, setUserDetails] = useState({});
+    const [trackings, setTrackings] = useState([]);
 
     // Comportements
 
     useEffect(() => {
         async function fetchData() {
-            const data = await apiService.getUserDetails();
-            setUserDetails(data);
-            console.log(data);
+            const userDetails = await apiService.getUserDetails();
+            const userTrackings = await apiService.getTrackingByUser();
+            setUserDetails(userDetails);
+            setTrackings(userTrackings);
+            console.log(trackings);
         }
 
         fetchData();
@@ -43,7 +46,19 @@ function ProfileComponent() {
                     </div>
                 </div>
                 <div
-                    className="div2 child-grid animate__animated animate__fadeInUp"></div>
+                    className="div2 child-grid animate__animated animate__fadeInUp">
+                    <h3>Mes derniers trackings</h3>
+                    <div className="column">
+                        {trackings && trackings.map((tracking) => (
+                            <div
+                                className="tracking-row"
+                                key={tracking._id}>
+                                <p>{tracking.trackingNumber}</p>
+                                <p>{tracking.alias}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
                 <div
                     className="div3 child-grid animate__animated animate__fadeInUp"></div>
                 <div
