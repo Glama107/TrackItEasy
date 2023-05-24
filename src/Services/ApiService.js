@@ -56,7 +56,9 @@ class ApiService {
             },
         })
         const data = await response.json();
-        return data.filter((item) => item.isTracked === true && item.userID === localStorage.getItem("userID"));
+        const trackings = data.filter((item) => item.isTracked === true && item.userID === localStorage.getItem("userID"));
+        const numberOfTrackings = trackings.length;
+        return [trackings, numberOfTrackings];
     }
 
     async getTrackingByCardId(cardId) {

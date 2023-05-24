@@ -18,7 +18,7 @@ function ConfirmSupressModal({
     };
 
     const handleSupress = () => {
-        const data = apiService.deleteTracking(card._id);
+        apiService.deleteTracking(card._id);
         setCardsUpdated(true);
         handleCloseModal();
     }

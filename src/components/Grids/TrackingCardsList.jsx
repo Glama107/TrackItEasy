@@ -20,7 +20,7 @@ function TrackingCardsList({
 
     useEffect(() => {
         async function fetchData() {
-            const data = await apiService.getTrackingByUser();
+            const data = await apiService.getTrackingByUser()[0];
 
             // Sort the data array by createdAt in descending order
             data.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));

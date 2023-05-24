@@ -23,6 +23,7 @@ function ProfileComponent() {
     //States
     const [userDetails, setUserDetails] = useState({});
     const [trackings, setTrackings] = useState([]);
+    const [numberOfTrackings, setNumberOfTrackings] = useState(0);
 
 
     const tableTheme = createTheme({
@@ -38,10 +39,11 @@ function ProfileComponent() {
     useEffect(() => {
         async function fetchData() {
             const userDetails = await apiService.getUserDetails();
-            const userTrackings = await apiService.getTrackingByUser();
+            const [userTrackings, numberOfTrackings] = await apiService.getTrackingByUser();
+
+            setNumberOfTrackings(numberOfTrackings);
             setUserDetails(userDetails);
             setTrackings(userTrackings);
-            console.log(trackings);
         }
 
         fetchData();
@@ -64,6 +66,9 @@ function ProfileComponent() {
                             </p>
                             <p>Date de naissance
                                 : <b>{userDetails.birthDate ? userDetails.birthDate : 'N/A'}</b>
+                            </p>
+                            <p>Nombre de colis
+                                : <b>{numberOfTrackings ? numberOfTrackings : 'N/A'}</b>
                             </p>
                         </div>
                     </div>

@@ -12,8 +12,8 @@ function HeaderRight() {
     return (
         <header>
             <div className="filters">
-                <button className="filter-btn active">All (146)</button>
-                <button className="filter-btn">Prepared (146)</button>
+                {/*<button className="filter-btn active">All (146)</button>*/}
+                {/*<button className="filter-btn">Prepared (146)</button>*/}
             </div>
         </header>
     );
